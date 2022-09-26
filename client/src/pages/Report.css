@@ -1,0 +1,89 @@
+@media only screen and (max-width: 900px) {
+.con 
+{
+    margin-top:1% !important;
+}
+.Wrapper
+{
+    width:300px !important;
+    font-size: 14px !important;
+}
+}
+.reportWrapper
+{
+
+    width:340px;
+    background:#e6e6e6;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px #000;
+    text-align: center;
+    margin:0 auto;
+    margin-top: 2%;
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative;
+
+}
+    .h2h2h2
+{
+    margin:10px 0;
+    padding-bottom:10px;
+    width:180px;
+    color:#78788c;
+    border-bottom:3px solid #78788c;
+}
+
+.Inp
+{
+    width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    font-family:'Montserrat',sans-serif;
+    transition:all .3s;
+    border-bottom:2px solid #bebed2}
+.Inp:focus{border-bottom:2px solid #78788c}
+.para:before
+{
+    content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color:#5a5a5a
+}
+.btnbtn
+{
+    float:right;
+    padding:8px 12px;
+    margin:8px 0 0;
+    font-family:'Montserrat',sans-serif;
+    border:2px solid #78788c;
+    background:0;
+    color:#5a5a6e;
+    cursor:pointer;
+    transition:all .3s
+}
+button:hover
+{
+    background:#78788c;
+    color:#fff;
+}
+.xx0x0x0xx:hover
+{
+    transition-duration: 0.5s;
+    border-radius:15%;
+}
+.changeOP
+{
+    animation: 0.4s mymove ease-in-out;
+}
+@keyframes mymove {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+

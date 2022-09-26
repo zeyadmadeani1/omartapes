@@ -1,0 +1,29 @@
+@media only screen and (max-width: 900px) {
+.Det
+{
+    flex-direction: column-reverse;
+    gap:15px;
+}
+.sub
+{
+    font-size: 10px;
+}
+.movedownaBIT
+{
+    margin-top:15%;
+}
+.chgonphone
+{
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+}
+}
+.changeOP
+{
+    animation: 0.7s mymove ease-in-out;
+}
+@keyframes mymove {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }

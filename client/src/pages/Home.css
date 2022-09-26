@@ -1,0 +1,48 @@
+.ShowOnMobile
+{
+    display: none !important;
+}
+
+div.scrollmenu {
+ 
+    overflow: auto;
+    white-space: nowrap;
+    height:42px;
+    font-size: 12px;
+  }
+  
+  div.scrollmenu a,Item{
+    display: inline-block;
+    color: rgb(168, 163, 163);
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  div.scrollmenu::-webkit-scrollbar
+  {
+    display: none;
+  }
+  div.scrollmenu a:hover {
+    background-color: rgb(204, 195, 195);
+    transition-duration: 0.3s;
+  }
+  @media only screen and (max-width: 900px) {
+.scrollmenu
+{
+display: flex !important;
+position: absolute !important;
+top:56px !important;
+left:0 !important;
+right:0 !important;
+}
+  }
+  .changeOP
+{
+    animation: 0.4s mymove ease-in-out;
+}
+@keyframes mymove {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+ 

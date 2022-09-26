@@ -1,0 +1,23 @@
+@media only screen and (max-width: 900px) {
+.imageonphone
+{
+    width:330px !important;
+}
+.imageonphoneedit
+{
+    width:250px !important;
+}
+}
+
+@media only screen and (max-width: 550px) {
+    .imageonphone
+    {
+        width:290px !important;
+    }
+    .imageonphoneedit
+    {
+        width:250px !important;
+    }
+    }
+    
+    
