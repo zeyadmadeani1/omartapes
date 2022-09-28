@@ -84,7 +84,8 @@ const handleNewPass=(e)=>
   const handleSub=async()=>
   {
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
-res.status===200 ? setMessage("Your Password has been reset successfully!") : setMessage("Something Went Wrong. Please Try again later!")
+res.status===200 ? setMessage("Your Password has been reset successfully!") : res.status===404? setMessage("Something Went Wrong. Please Try again later!")
+: setMessage("Something Went Wrong. Please Try again later!")
   }
   handleSub()
   setIsLoading(false)
