@@ -40,4 +40,4 @@ app.get('*', (req, res) => {
 });
 mongoose.connect(process.env.DSKS,{useNewUrlParser:true})
 .then(()=>{console.log("Connected to Database")}).catch(e=>{console.log(`Error connecting to database: ${e}`)})
-app.listen(process.env.PORT,()=>{console.log(`Server is listening on port ${process.env.PORT}`)})
+app.listen(process.env.PORT || 5000,()=>{console.log(`Server is listening on port ${process.env.PORT || 5000}`)})

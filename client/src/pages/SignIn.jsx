@@ -123,8 +123,11 @@ catch(e)
   <h6 ref={wrong} style={{display:"none",color:"crimson"}}>Wrong User name or Password</h6>
   <Input style={{width:"55%"}} type="submit" value="Sign In" className="btnbtn"/>
   <br/>
-
-
+  <Link style={{textDecoration:"none"}} to="/reset">
+  <WrapperText className="Wrappertxt">
+  Forgot Password?
+  </WrapperText>
+</Link>
 <Link style={{textDecoration:"none"}} to="/Signup">
   <WrapperText className="Wrappertxt">
   Don't have an account?

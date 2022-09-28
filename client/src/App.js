@@ -13,6 +13,8 @@ import Report from "./pages/Report";
 import Signup from "./pages/Signup";
 import Search from "./pages/Search";
 import Reset from "./pages/Reset";
+import {v4 as uuid} from "uuid"
+import ResetPassword from "./pages/ResetPassword";
 
 const Container = styled.div`
   display: flex;
@@ -44,6 +46,7 @@ function App() {
                   <Route index element={currentUser? <Home darkMode={darkMode} setDarkMode={setDarkMode} type="random"/> : <SignIn darkMode={darkMode} setDarkMode={setDarkMode}/>} />
                   <Route path="trends" element={<Home darkMode={darkMode} setDarkMode={setDarkMode} type="trend"/>} />
                   <Route path="reset" element={<Reset darkMode={darkMode} setDarkMode={setDarkMode}/>} />
+                  <Route path="987739280-0329873280-KJFHKlnhdkujospk-2317Y6U32179808/:token" element={<ResetPassword darkMode={darkMode} setDarkMode={setDarkMode}/>} />
                   <Route path="subscriptions" element={<Home darkMode={darkMode} setDarkMode={setDarkMode} type="sub"/>} />
                   <Route path="search" element={<Search darkMode={darkMode} setDarkMode={setDarkMode}/>} />
                   <Route path="signin" element={currentUser ? <Home darkMode={darkMode} setDarkMode={setDarkMode} type="random" /> :<SignIn darkMode={darkMode} setDarkMode={setDarkMode}/>} />

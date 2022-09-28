@@ -72,7 +72,6 @@ const handleReset=(e)=>
     const handleSub=async()=>
     {
 await axiosInstance.post(`/auth/reset`,{email:email})
-
     }
     handleSub()
     handleOpen()
@@ -99,7 +98,7 @@ Please enter your email to search for your account.
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-We have sent an email to you.
+We have sent an email to you with a reset link if email exists in our records. Please make sure to check your spam folder.
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>

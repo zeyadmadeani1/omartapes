@@ -11,17 +11,18 @@ router.delete("/:id",VerifyToken,deleteuser)
 //get a user 
 router.get("/find/:id", getuser)
 
-//subscribe a user
+//subscribe to a user
 router.put("/sub/:id",VerifyToken,subscribe)
 
-//unsubscribe a user
+//unsubscribe from a user
 router.put("/unsub/:id",VerifyToken,unsubscribe)
 
 //like a video 
 router.put("/like/:videoId",VerifyToken,like)
 
+//inc views
 router.put("/viewthis/:id",VerifyToken,viewthis)
 
-router.put("/dislike/:videoId",VerifyToken,unlike)
 //disklike a video
+router.put("/dislike/:videoId",VerifyToken,unlike)
 export default router
