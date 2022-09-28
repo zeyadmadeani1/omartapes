@@ -31,7 +31,7 @@ const Input = styled.input`
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
-  width: 100%;
+  width: 80%;
   color: ${({ theme }) => theme.text};
 `;
 const Label=styled.label
@@ -80,9 +80,10 @@ const handleNewPass=(e)=>
   e.preventDefault()
   if(input1.current.value===input2.current.value)
 {
-  setIsLoading(true)
+
   const handleSub=async()=>
   {
+setIsLoading(true)
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
 if(res.status===200)
 setSuccess(true)

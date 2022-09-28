@@ -29,7 +29,7 @@ const Input = styled.input`
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
-  width: 100%;
+  width: 80%;
   color: ${({ theme }) => theme.text};
 `;
 const Label=styled.label
