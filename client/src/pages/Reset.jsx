@@ -67,11 +67,11 @@ const Reset=()=>
 const [email,setEmail]=useState("")
 const handleReset=(e)=>
 {
-  
+  setIsLoading(true)
     e.preventDefault()
     const handleSub=async()=>
     {
-await axiosInstance.post(`/auth/reset`,{email:email})
+const res=await axiosInstance.post(`/auth/reset`,{email:email})
     }
     handleSub()
     handleOpen()
