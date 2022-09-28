@@ -85,11 +85,9 @@ const handleNewPass=(e)=>
   {
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
 if(res.status===200)
-setMessage("Your Password has been reset successfully!")
-else if(res.status===422)
-setMessage("Session has expired. Please try to reset your password again with a new link.")
+setSuccess(true)
 else 
-setMessage("Something Went Wrong. Please Try again later!")
+setSuccess(false)
   }
   handleSub()
   setIsLoading(false)
@@ -127,7 +125,7 @@ Please retype your new password
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-{!isLoading && message}
+{!isLoading && success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>
