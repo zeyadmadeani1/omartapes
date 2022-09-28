@@ -88,13 +88,12 @@ const [isLoading,setIsLoading]=useState(false)
 const [success,setSuccess]=useState(false)
 const handleNewPass=(e)=>
 {
+  setIsLoading(true)
   e.preventDefault()
   if(input1.current.value===input2.current.value)
 {
-
   const handleSub=async()=>
   {
-setIsLoading(true)
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
 if(res.status===200)
 {
@@ -165,7 +164,7 @@ Please retype your new password
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-{isLoading? <img src="/loading.svg"/> : success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
+{isLoading? <img height={50} width={50} src="/loading.svg"/> :  !isLoading && success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>
