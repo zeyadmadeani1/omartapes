@@ -86,6 +86,8 @@ const handleNewPass=(e)=>
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
 if(res.status===200)
 setMessage("Your Password has been reset successfully!")
+else if(res.status===422)
+setMessage("Session has expired. Please try to reset your password again with a new link.")
 else 
 setMessage("Something Went Wrong. Please Try again later!")
   }
