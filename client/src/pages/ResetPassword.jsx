@@ -165,7 +165,7 @@ Please retype your new password
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-{!isLoading && success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
+{isLoading? <img src="/loading.svg"/> : success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>
