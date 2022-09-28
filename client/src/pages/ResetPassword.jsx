@@ -84,6 +84,10 @@ const handleNewPass=(e)=>
   const handleSub=async()=>
   {
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
+if(res.status===200)
+setMessage("Your Password has been reset successfully!")
+else 
+setMessage("Something Went Wrong. Please Try again later!")
   }
   handleSub()
   setIsLoading(false)
@@ -121,7 +125,7 @@ Please retype your new password
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-          {isLoading ? "Something Went Wrong. Please Try again later!" : "Your Password has been reset successfully!"}
+{!isLoading && message}
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>
