@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useParams } from "react-router-dom";
 import "./Home.css"
+import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from "react-router-dom";
 const Container=styled.div
 `
 display: flex;
@@ -44,6 +46,15 @@ display:flex;
 flex-direction:column;
 gap:30px;
 `
+const Light=styled.a
+`
+color:${props=>props.theme.text};
+cursor:pointer`
+const WrapperText=styled.h6
+`
+color:${props=>props.theme.text};
+text-align:center;
+`
 const Holder=styled.div
 `
 display:flex;
@@ -61,7 +72,7 @@ const style = {
   boxShadow: 24,
   p: 4
 };
-const ResetPassword=()=>
+const ResetPassword=({darkMode,setDarkMode})=>
 {
     const {token}=useParams()
     const input1=useRef()
@@ -86,12 +97,18 @@ const handleNewPass=(e)=>
 setIsLoading(true)
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
 if(res.status===200)
-setSuccess(true)
+{
+  setSuccess(true)
+  setIsLoading(false)
+}
 else 
-setSuccess(false)
+{
+  setSuccess(false)
+  setIsLoading(false)
+}
   }
   handleSub()
-  setIsLoading(false)
+  
   handleOpen()
 }
  else 
@@ -100,6 +117,28 @@ setSuccess(false)
  }
 }
 return(<>
+  <div style={{display:"none"}} className="scrollmenu">
+      <Link to="/">
+  Home
+</Link>
+<Link to="/trends">
+  explore
+</Link>
+<Link to="/subscriptions">
+  Subscriptions
+</Link>
+
+<Link to="/updateprofile">
+  Settings
+</Link>
+<Link to="/help">
+  Help
+</Link>
+<Light onClick={() => setDarkMode(!darkMode)}>
+          <SettingsBrightnessOutlinedIcon />
+          {darkMode ? "Light" : "Dark"} Mode
+        </Light>
+</div>
 <Container>
 <Holder>
 <Wrapper onSubmit={e=>handleNewPass(e)}>
