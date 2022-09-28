@@ -95,15 +95,16 @@ const handleNewPass=(e)=>
   const handleSub=async()=>
   {
 const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
+setIsLoading(false)
 if(res.status===200)
 {
   setSuccess(true)
-  setIsLoading(false)
+
 }
 else 
 {
   setSuccess(false)
-  setIsLoading(false)
+
 }
   }
   handleSub()
