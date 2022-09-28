@@ -67,7 +67,6 @@ const Reset=()=>
 const [email,setEmail]=useState("")
 const handleReset=(e)=>
 {
-  setIsLoading(true)
     e.preventDefault()
     const handleSub=async()=>
     {
