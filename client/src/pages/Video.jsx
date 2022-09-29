@@ -227,7 +227,7 @@ throw e
 }
   return (
 <>
-{!loading && 
+
   <General className="changeOP">
   <div style={{display:"none"}} className="scrollmenu">
        <Link to="/">
@@ -250,9 +250,9 @@ throw e
            {darkMode ? "Light" : "Dark"} Mode
          </Light>
  </div>
+
  <Container className="movedownaBIT">
- 
- <Content>
+ {!loading && <Content>
  
  {currentVideo && <VideoWrapper>
  
@@ -320,10 +320,11 @@ throw e
      
    }
  
- </Content>
+ </Content>}
+ 
  </Container>
      </General>
-}
+
 </>
   );
 };
