@@ -12,4 +12,5 @@ router.post("/login",signin)
 router.post("/reset",forgotPassword)
 
 router.post("/newpass",newpass)
+
 export default router

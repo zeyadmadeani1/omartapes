@@ -139,10 +139,10 @@ Go to Login
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography style={{textAlign:"center"}} id="modal-modal-title" variant="h6" component="h2">
 Success!
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
 You have successfully Registered. Please <Link to="/signin">login</Link> to continue.
           </Typography>
         </Box>

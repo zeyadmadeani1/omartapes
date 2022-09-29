@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {Link } from "react-router-dom";
 import styled from "styled-components";
 import {format} from "timeago.js"
-import { axiosInstance } from "../Config";
 import "./card.css"
+import { axiosInstance } from "../Config";
 const Container = styled.div`
 width:100%;
 margin-top:2.5rem;

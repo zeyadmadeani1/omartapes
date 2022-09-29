@@ -127,7 +127,7 @@ const {currentUser}=useSelector(state=>state.user)
 const[user,setUser]=useState({})
 const navigate=useNavigate()
 const dispatch=useDispatch()
-
+const [loading,setLoading]=useState(false)
 
 
 useEffect(()=>
@@ -146,12 +146,22 @@ useEffect(()=>
 
   const fetchdata=async()=>
   {
+setLoading(true)
+        await axiosInstance.get(`/videos/find/${path.id}`).then(res=>
+          {
+            dispatch(fetchSuccess(res.data))
+            axiosInstance.get(`/users/find/${res.data.userId}`)
+            .then(result=>
+              {
+                setUser(result.data)
+              }).catch(e=>{throw e})
+            setLoading(false)
+          }).catch(e=>
+            {
+              throw e 
+              setLoading(false)
+            })
 
-
-        const res=await axiosInstance.get(`/videos/find/${path.id}`)
-        dispatch(fetchSuccess(res.data))
-        const userRes=await axiosInstance.get(`/users/find/${res.data.userId}`)
-        setUser(userRes.data)
 }
 fetchdata()
 },[dispatch])
@@ -215,101 +225,105 @@ throw e
 
 }
   return (
-    <General className="changeOP">
- <div style={{display:"none"}} className="scrollmenu">
-      <Link to="/">
-  Home
-</Link>
-<Link to="/trends">
-  explore
-</Link>
-<Link to="/subscriptions">
-  Subscriptions
-</Link>
-<Link to="/updateprofile">
-  Settings
-</Link>
-<Link to="/help">
-  Help
-</Link>
-<Light onClick={() => setDarkMode(!darkMode)}>
-          <SettingsBrightnessOutlinedIcon />
-          {darkMode ? "Light" : "Dark"} Mode
-        </Light>
-</div>
-<Container className="movedownaBIT">
-
-<Content>
-
-{currentVideo && <VideoWrapper>
-
-<VideoFrame
-controls
-src={currentVideo.videoUrl}
-poster={currentVideo.imgUrl}
-/>
-</VideoWrapper>}
-  {currentVideo &&   <Title>
-{currentVideo.Title}
-  </Title>}
-{currentVideo && 
-  <Details className="Det">
-  <Info>
-{Math.round(currentVideo.views)} views • Posted {format(currentVideo.createdAt)}
-  </Info>
-  <Buttons>
-    {
-      currentUser  && <Button onClick={handleLike}>
-      <ThumbUpIcon /> {currentVideo.likes.length} 	&nbsp;    
-  </Button>
-    }
-{
-currentUser && <Button onClick={handleDislike}>
-<ThumbDownOffAltOutlinedIcon />{currentVideo.dislikes.length} 	&nbsp;
-</Button>
+<>
+{!loading && 
+  <General className="changeOP">
+  <div style={{display:"none"}} className="scrollmenu">
+       <Link to="/">
+   Home
+ </Link>
+ <Link to="/trends">
+   explore
+ </Link>
+ <Link to="/subscriptions">
+   Subscriptions
+ </Link>
+ <Link to="/updateprofile">
+   Settings
+ </Link>
+ <Link to="/help">
+   Help
+ </Link>
+ <Light onClick={() => setDarkMode(!darkMode)}>
+           <SettingsBrightnessOutlinedIcon />
+           {darkMode ? "Light" : "Dark"} Mode
+         </Light>
+ </div>
+ <Container className="movedownaBIT">
+ 
+ <Content>
+ 
+ {currentVideo && <VideoWrapper>
+ 
+ <VideoFrame
+ controls
+ src={currentVideo.videoUrl}
+ poster={currentVideo.imgUrl}
+ />
+ </VideoWrapper>}
+   {currentVideo &&   <Title>
+ {currentVideo.Title}
+   </Title>}
+ {currentVideo && 
+   <Details className="Det">
+   <Info>
+ {Math.round(currentVideo.views)} views • Posted {format(currentVideo.createdAt)}
+   </Info>
+   <Buttons>
+     {
+       currentUser  && <Button onClick={handleLike}>
+       <ThumbUpIcon /> {currentVideo.likes.length} 	&nbsp;    
+   </Button>
+     }
+ {
+ currentUser && <Button onClick={handleDislike}>
+ <ThumbDownOffAltOutlinedIcon />{currentVideo.dislikes.length} 	&nbsp;
+ </Button>
+ }
+ 
+     {
+       currentUser && currentVideo &&  currentUser._id===currentVideo.userId &&   <Button onClick={handleDelete}>
+       <ClearIcon /> Delete Video
+     </Button>
+     }
+ </Buttons>
+ </Details>
+ }
+ 
+   <Hr />
+   <Channel>
+     {currentVideo && 
+         <ChannelInfo>    
+         <Image src={user.Img? user.Img : "https://www.informatique-mania.com/wp-content/uploads/2021/04/foto-sin-rostro-de-facebook-780x470.jpg"}/>
+         <ChannelDetail >
+           <ChannelName>{user.name}</ChannelName>
+           <ChannelCounter>{user.subscribers} Subscribers</ChannelCounter>
+           <Description>
+             {currentVideo.desc}
+           </Description>
+         </ChannelDetail>
+       </ChannelInfo>
+     }
+ 
+     {
+       currentUser && <Subscribe className="sub" onClick={handleSubsription}>
+       {currentUser.subscribedUsers.includes(user._id) ? "SUBSCRIBED" : "SUBSCRIBE"}
+                 </Subscribe>
+     }
+ 
+   </Channel>
+   <Hr />
+   {
+     
+     currentVideo && <Comments videoId={currentVideo._id} />
+     
+   }
+ 
+ </Content>
+ </Container>
+     </General>
 }
-
-    {
-      currentUser && currentVideo &&  currentUser._id===currentVideo.userId &&   <Button onClick={handleDelete}>
-      <ClearIcon /> Delete Video
-    </Button>
-    }
-</Buttons>
-</Details>
-}
-
-  <Hr />
-  <Channel>
-    {currentVideo && 
-        <ChannelInfo>    
-        <Image src={user.Img? user.Img : "https://www.informatique-mania.com/wp-content/uploads/2021/04/foto-sin-rostro-de-facebook-780x470.jpg"}/>
-        <ChannelDetail >
-          <ChannelName>{user.name}</ChannelName>
-          <ChannelCounter>{user.subscribers} Subscribers</ChannelCounter>
-          <Description>
-            {currentVideo.desc}
-          </Description>
-        </ChannelDetail>
-      </ChannelInfo>
-    }
-
-    {
-      currentUser && <Subscribe className="sub" onClick={handleSubsription}>
-      {currentUser.subscribedUsers.includes(user._id) ? "SUBSCRIBED" : "SUBSCRIBE"}
-                </Subscribe>
-    }
-
-  </Channel>
-  <Hr />
-  {
-    
-    currentVideo && <Comments videoId={currentVideo._id} />
-    
-  }
-
-</Content>
-</Container>
-    </General>
+</>
   );
 };
 

@@ -33,7 +33,7 @@ const Input = styled.input`
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
-  width: 80%;
+  width: 100%;
   color: ${({ theme }) => theme.text};
 `;
 const Label=styled.label
@@ -85,7 +85,6 @@ const ResetPassword=({darkMode,setDarkMode})=>
 const [email,setEmail]=useState("")
 const [message,setMessage]=useState("")
 const [isLoading,setIsLoading]=useState(false)
-const [success,setSuccess]=useState(false)
 const handleNewPass=(e)=>
 {
   setIsLoading(true)
@@ -94,18 +93,11 @@ const handleNewPass=(e)=>
 {
   const handleSub=async()=>
   {
-const res=await axiosInstance.post(`/auth/newpass`,{password:password,token:token})
+    axiosInstance.post(`/auth/newpass`,{password:password,token:token}).then(res=>
+  {
+    setMessage("Your password has been changed successfully")
+  }).catch(e=>{setMessage("Session has expired!")})
 setIsLoading(false)
-if(res.status===200)
-{
-  setSuccess(true)
-
-}
-else 
-{
-  setSuccess(false)
-
-}
   }
   handleSub()
   
@@ -165,7 +157,7 @@ Please retype your new password
         <Box className="bgcolcol" sx={style}>
 
           <Typography style={{textAlign:"center"}} id="modal-modal-description" sx={{ mt: 2 }}>
-{isLoading? <img height={50} width={50} src="/loading.svg"/> :  !isLoading && success ? "Password has been changed successfully." : "Something went wrong. Please try again later"}
+{message}
           </Typography>
           <div style={{textAlign:"center"}}>
             <br/>
