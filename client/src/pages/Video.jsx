@@ -17,7 +17,7 @@ import "./Home.css"
 const Container = styled.div`
   display: flex;
   gap: 24px;
-  min-height:100vh;
+  height:100vh;
 `;
 
 const Content = styled.div`
