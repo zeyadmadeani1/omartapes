@@ -34,9 +34,16 @@ app.use("/api/users",UserRoute)
 app.use("/api/videos",VideoRoute)
 app.use("/api/comments",CommentRoute)
 app.use("/api/auth",AuthRoute)
-app.use(express.static(path.join(__dirname, "/client/build")));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
 });
 mongoose.connect(process.env.DSKS,{useNewUrlParser:true})
 .then(()=>{console.log("Connected to Database")}).catch(e=>{console.log(`Error connecting to database: ${e}`)})

@@ -171,7 +171,7 @@ dispatch(image(img))
         try 
         {
           dispatch(changeName(uname.current.value))
-         const res=await axiosInstance.put(`/users/${currentUser._id}`,{name:uname.current.value})
+         const res=await axiosInstance.put(`/users/${currentUser._id}`,{name:uname.current.value.toLowerCase()})
          res.status===200 && window.alert("Username has been updated successfully.")
         }
         catch(e)

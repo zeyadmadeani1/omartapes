@@ -10,7 +10,10 @@ div.scrollmenu {
     height:42px;
     font-size: 12px;
   }
-  
+  .Inp::placeholder
+  {
+    text-align: center !important;
+  }
   div.scrollmenu a,Item{
     display: inline-block;
     color: rgb(168, 163, 163);
