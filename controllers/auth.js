@@ -58,7 +58,7 @@ const token=uuid()
     from: 'no-reply.omartapes@outlook.com', // Sender address
     to: user.email, // List of recipients
     subject: `${user.name.charAt(0).toUpperCase() + user.name.slice(1)}'s Password Reset Link - Omartapes`, // Subject line
-    html: `<h3>Hello ${user.name.charAt(0).toUpperCase() + user.name.slice(1)}, Below is your reset link for your account.</h3> <p><a href="https://omartapes.vercel.app/987739280-0329873280-KJFHKlnhdkujospk-2317Y6U32179808/${token}">https://omartapes.vercel.app/987739280-0329873280-KJFHKlnhdkujospk-2317Y6U32179808/${token}</a></p> <h3>Thank you for using Omartapes!</h3>`, // Plain text body
+    html: `<h3>Hello ${user.name.charAt(0).toUpperCase() + user.name.slice(1)}, Below is your reset link for your account.</h3> <p><a href="https://omartapes.online/987739280-0329873280-KJFHKlnhdkujospk-2317Y6U32179808/${token}">https://omartapes.online/987739280-0329873280-KJFHKlnhdkujospk-2317Y6U32179808/${token}</a></p> <h3>Thank you for using Omartapes!</h3>`, // Plain text body
 };
 
 transporter.sendMail(mailOptions, function(err, info) {
